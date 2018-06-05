@@ -14,7 +14,7 @@ module.exports = {
                     },
                     {
                         name: 'Debug info',
-                        value: `Loaded commands: ${ctx.bot.commands.length}\nLoaded events: ${ctx.bot.events.length}`,
+                        value: `Loaded commands: ${ctx.bot.commands.length}\nLoaded events: ${Object.keys(ctx.bot.cevents).length}`,
                         inline: false
                     }
                 ]
