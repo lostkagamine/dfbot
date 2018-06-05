@@ -11,13 +11,13 @@ module.exports = {
         let baseURL = `${apiEndpoint}?action=opensearch&search=${toSearch}&format=json`
         superagent.get(baseURL)
             .then(res => {
-                let fields = res.body[1].slice(0, 3).map(a => {
+                let fields = res.body[1].slice(0, 5).map(a => {
                     return `[${a}](http://dwarffortresswiki.org/index.php/${encodeURI(a)})`
                 })
                 ctx.send({
                     embed: {
                         title: `DFWiki search results for ${args.join(' ')}`,
-                        description: fields.join('\n')
+                        description: fields.join('\n') || 'No results.'
                     },
                     color: Math.floor(Math.random() * 0xFFFFFF)
                 })
