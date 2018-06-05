@@ -8,7 +8,7 @@ module.exports = {
     description: 'Searches the Dwarf Fortress Wiki for info.',
     code: async (ctx, args) => {
         let toSearch = encodeURIComponent(args.filter(a => a !== '--outdated').join(' '))
-        let outdated = args.join(' ').contains('--outdated')
+        let outdated = args.includes('--outdated')
         let baseURL = `${apiEndpoint}?action=opensearch&search=${toSearch}&format=json`
         superagent.get(baseURL)
             .then(res => {
