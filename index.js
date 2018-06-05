@@ -54,7 +54,7 @@ var cycleGame = () => {
     ]
     currGame++;
     if (currGame >= games.length) currGame = 0;
-    bot.editStatus('online', {name: games[currGame].name + ` | ${bot.prefixes[0]}help - ${bot.guilds.size} servers`, type: games[currGame].type})
+    bot.editStatus('online', {name: games[currGame].name + ` | ${bot.prefixes[0]}help`, type: games[currGame].type})
 }
 
 
