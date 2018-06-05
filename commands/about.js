@@ -1,5 +1,6 @@
 module.exports = {
     name: 'about',
+    description: 'About me.',
     code: async (ctx, args) => {
         await ctx.send({
             embed: {

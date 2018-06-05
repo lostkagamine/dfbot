@@ -8,7 +8,6 @@
 
 const Eris = require('eris')
 const handler = require('./src/handler.js')
-const crypto = require('crypto');
 const superagent = require('superagent')
 var config = {};
 if (process.env.CI) { 
@@ -151,7 +150,6 @@ bot.on('ready', () => {
 })
 
 bot.cmdEvent('commandError', async (ctx, err) => {
-    let errcode = crypto.randomBytes(10).toString('hex')
     let etext = `\`\`\`${err.stack}\`\`\``
     if (etext.length > 2000) {
         superagent.post('https://hastebin.com/documents')
@@ -165,32 +163,11 @@ bot.cmdEvent('commandError', async (ctx, err) => {
         embed: {
             title: 'Command error',
             description: `Well, this is embarrassing. 
-It appears an error has happened in nxtbot's source code.
-This isn't your fault, but you may want to report this at [${ctx.bot.config.bot.support_text}](${ctx.bot.config.bot.support}). Be sure to quote the error code!`,
+It appears an error has happened in dfbot's source code.
+This isn't your fault, but you may want to tell ry00001#3487 about this! Make sure to tell him where it happened, and what command you ran!`,
             fields: [{
                 name: 'Error details',
                 value: `\`\`\`${err}\`\`\``,
-                inline: false
-            },
-            {
-                name: 'Error code',
-                value: errcode,
-                inline: false
-            }]
-        }
-    })
-    ctx.bot.createMessage(ctx.bot.config.bot.error_channel, {
-        embed: {
-            title: `Command error in \`${ctx.command.name}\``,
-            description: 'Error occurred while processing command',
-            fields: [{
-                name: 'Error details (stacktrace)',
-                value: etext,
-                inline: false
-            },
-            {
-                name: 'Error code',
-                value: errcode,
                 inline: false
             }]
         }
@@ -202,9 +179,7 @@ bot.cmdEvent('commandNoDM', async ctx => {
 })
 
 bot.cmdEvent('commandNotOwner', async ctx => { 
-    let msgs = ['...Nope.',
-        'Nice try, but did you really think I\'d let you?',
-        'Why even bother trying? Not like I\'ll let you.']
+    let msgs = [`\`dfbot cancels job "run ${ctx.command.name}": Invalid permissions.\``]
     await ctx.send(msgs[Math.floor(Math.random() * msgs.length)])
 })
 

@@ -3,7 +3,7 @@ module.exports = {
     description: 'Restarts dfbot. Owner-only.',
     dmable: true,
     code: async (ctx, args) => {
-        await ctx.send('System going down for reboot NOW!')
+        await ctx.send('dfbot is now restarting...')
         process.exit(0)
     },
     ownerOnly: true,
