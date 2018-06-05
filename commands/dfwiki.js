@@ -13,7 +13,7 @@ module.exports = {
         let baseURL = `${apiEndpoint}?action=opensearch&search=${toSearch}&format=json`
         superagent.get(baseURL)
             .then(res => {
-                let fields = res.body[1].slice(0, 5).filter(a => {
+                let fields = res.body[1].slice(0, 10).filter(a => {
                     if (outdated) {
                         return true
                     }
