@@ -33,5 +33,6 @@ module.exports = {
                 console.log(e);
                 ctx.send('Oops, some kind of error has occurred during wiki search. Please tell the dev.')
             })
-    }
+    },
+    aliases: ['wiki', 'w']
 }
