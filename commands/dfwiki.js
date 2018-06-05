@@ -17,9 +17,9 @@ module.exports = {
                 ctx.send({
                     embed: {
                         title: `DFWiki search results for ${args.join(' ')}`,
-                        description: fields.join('\n') || 'No results.'
-                    },
-                    color: Math.floor(Math.random() * 0xFFFFFF)
+                        description: fields.join('\n') || 'No results.',
+                        color: Math.floor(Math.random() * 0xFFFFFF)
+                    }
                 })
             })
             .catch(e => {
