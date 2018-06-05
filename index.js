@@ -47,7 +47,7 @@ var currGame = 0;
 var cycleGame = () => {
     let games = [
         {name: 'Dwarf Fortress', type: 0},
-        {name: 'to keyboards', type: 2},
+        {name: 'keyboards', type: 2},
         {name: 'now open-source!', type: 0},
         {name: 'Powered by nxtbot!', type: 0},
         {name: 'https://gitea.ry00001.me/ry00001/dfbot', type: 0}
@@ -74,64 +74,16 @@ var delGuildInfo = g => {
 
 bot.on('guildCreate', g => {
     makeGuildInfo(g)
-    if (bot.config.bot.logging) {
-        bot.createMessage(bot.config.bot.guild_channel, {
-            embed: {
-                title: `New guild: ${g.name} (${g.id})`,
-                color: 0x00FF00,
-                description: 'A new user has added nxtbot to their guild.',
-                thumbnail: {
-                    url: g.iconURL
-                },
-                fields: [
-                    {
-                        name: 'Owned by',
-                        value: bot.users.get(g.ownerID) ? `${bot.users.get(g.ownerID).username}#${bot.users.get(g.ownerID).discriminator}` : '???',
-                        inline: false
-                    },
-                    {
-                        name: 'Members',
-                        value: `${g.members.size} (${g.members.filter(a => a.bot).length} bots)`,
-                        inline: false
-                    }
-                ]
-            }
-        })
-    }
 })
 
 bot.on('guildDelete', g => {
     delGuildInfo(g) // clean up after ourselves
-    if (bot.config.bot.logging) {
-        bot.createMessage(bot.config.bot.guild_channel, {
-            embed: {
-                title: `Lost guild: ${g.name} (${g.id})`,
-                color: 0xFF0000,
-                description: 'Somebody has removed nxtbot from their guild.',
-                thumbnail: {
-                    url: g.iconURL
-                },
-                fields: [
-                    {
-                        name: 'Owned by',
-                        value: bot.users.get(g.ownerID) ? `${bot.users.get(g.ownerID).username}#${bot.users.get(g.ownerID).discriminator}` : '???',
-                        inline: false
-                    },
-                    {
-                        name: 'Members',
-                        value: `${g.members.size} (${g.members.filter(a => a.bot).length} bots)`,
-                        inline: false
-                    }
-                ]
-            }
-        })
-    }
 })
 
 bot.on('ready', () => {
     console.log(`Ready, connected as ${bot.user.username}#${bot.user.discriminator} (${bot.user.id})`)
     if (!bot.bot) {
-        console.log('nxtbot can only be ran under bot accounts. Exiting...')
+        console.log('dfbot can only be ran under bot accounts. Exiting...')
         process.exit(1);
     }
 
