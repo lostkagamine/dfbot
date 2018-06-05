@@ -43,6 +43,7 @@ module.exports = {
                     }
                 })
             })
+            .catch(e => { ctx.send('Error has occurred while searching DFFD: `' + e + '`') })
     },
     aliases: ['depot']
 }

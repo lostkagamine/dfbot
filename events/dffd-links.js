@@ -40,6 +40,7 @@ module.exports = {
                         }
                     })
                 })
+                .catch(e => { m._client.createMessage(m.channel.id, 'Error has occurred while searching DFFD: `' + e + '`') })
         }
     }
 }
