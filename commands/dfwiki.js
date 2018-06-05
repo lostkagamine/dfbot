@@ -16,7 +16,7 @@ module.exports = {
                     if (outdated) {
                         return true
                     }
-                    return a.split(':')[0] === 'DF2014' || a.split(':') === a
+                    return a.split(':')[0] === 'DF2014' || !a.includes(':')
                 }).map(a => {
                     return `[${a}](http://dwarffortresswiki.org/index.php/${encodeURI(a)})`
                 })
