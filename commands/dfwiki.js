@@ -7,7 +7,8 @@ module.exports = {
     name: 'dfwiki',
     description: 'Searches the Dwarf Fortress Wiki for info.',
     code: async (ctx, args) => {
-        let toSearch = encodeURIComponent(args.filter(a => a !== '--outdated').join(' '))
+        let sanitised = args.filter(a => a !== '--outdated').join(' ')
+        let toSearch = encodeURIComponent(sanitised)
         let outdated = args.includes('--outdated')
         let baseURL = `${apiEndpoint}?action=opensearch&search=${toSearch}&format=json`
         superagent.get(baseURL)
@@ -22,7 +23,7 @@ module.exports = {
                 })
                 ctx.send({
                     embed: {
-                        title: `DFWiki search results for ${args.join(' ')}`,
+                        title: `DFWiki search results for ${sanitised}`,
                         description: fields.join('\n') || 'No results.',
                         color: Math.floor(Math.random() * 0xFFFFFF)
                     }
