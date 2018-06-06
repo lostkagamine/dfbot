@@ -14,5 +14,5 @@ cache:
 
 test_async:
   script:
-   - npm install --dev
+   - npm install -g eslint
    - eslint .
