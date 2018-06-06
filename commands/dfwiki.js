@@ -25,7 +25,10 @@ module.exports = {
                     embed: {
                         title: `DFWiki search results for ${sanitised}`,
                         description: fields.join('\n') || 'No results.',
-                        color: Math.floor(Math.random() * 0xFFFFFF)
+                        color: Math.floor(Math.random() * 0xFFFFFF),
+                        footer: {
+                            text: 'Specify `--outdated` in the query to get pre-DF2014 information.'
+                        }
                     }
                 })
             })

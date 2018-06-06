@@ -14,10 +14,10 @@ module.exports = {
         superagent.get(`http://dffd.bay12games.com/file_data/${id}.json`)
             .then(res => {
                 if (res.status === 404) {
-                    return ctx.send('Bad file ID. (404 Not Found)')
+                    return
                 }
                 if (res.headers['content-type'] !== 'application/json') {
-                    return ctx.send('Oops, something went wrong on DFFD\'s side. This is not your fault, nor is it the bot\'s. Try again later maybe?')
+                    return
                 }
                 ctx.send({
                     embed: {
@@ -27,12 +27,12 @@ module.exports = {
                         fields: [
                             {
                                 name: 'Version',
-                                value: `${res.body.version} (for DF ${res.body.version_df})`,
+                                value: `${res.body.version || 'Unspecified'}${res.body.version_df ? ` (for DF version ${res.body.version_df})` : ''}`,
                                 inline: false
                             },
                             {
                                 name: 'Rating',
-                                value: `${res.body.rating} stars (based on ${res.body.votes} votes)`,
+                                value: `${res.body.rating} stars${res.body.votes > 0 ? ` (based on ${res.body.votes} votes)` : ''}`,
                                 inline: false
                             }
                         ],
