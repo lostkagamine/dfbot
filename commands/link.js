@@ -3,6 +3,11 @@ module.exports = {
     description: 'Manages and views links.',
     code: async (ctx, args) => {
         let hasPerm = u => ctx.bot.isOwner(u) || u.permission.has('manageGuild')
+        if (args[0] === 'list') {
+            let alllinks = await ctx.bot.db[ctx.guild.id].tags.get
+            let s = `All links currently present in **${ctx.guild.name}**:` + '```\n' + Object.keys(alllinks).join(', ') + '```'
+            return await ctx.send(s)
+        }
         if (args[0] === 'add' && hasPerm(ctx.member)) {
             if (!args[1]) return await ctx.send(`Syntax: \`${ctx.prefix}${ctx.command.name} add <link name> <contents>\``)
             if (await ctx.bot.db[ctx.guild.id].tags[args[1]].exists()) return await ctx.send('This link already exists.')
