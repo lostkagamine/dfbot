@@ -49,8 +49,8 @@ var cycleGame = () => {
         {name: 'Dwarf Fortress', type: 0},
         {name: 'keyboards', type: 2},
         {name: 'now open-source!', type: 0},
-        {name: 'Powered by nxtbot!', type: 0},
-        {name: 'https://gitea.ry00001.me/ry00001/dfbot', type: 0}
+        {name: 'Powered by TuxNG!', type: 0},
+        {name: 'https://owo.codes/ry00001/dfbot', type: 0}
     ]
     currGame++;
     if (currGame >= games.length) currGame = 0;
@@ -116,7 +116,7 @@ bot.cmdEvent('commandError', async (ctx, err) => {
             title: 'Command error',
             description: `Well, this is embarrassing. 
 It appears an error has happened in dfbot's source code.
-This isn't your fault, but you may want to tell ry00001#3487 about this! Make sure to tell him where it happened, and what command you ran!`,
+This isn't your fault, but you may want to tell ry00001#3487 about this! Make sure to tell her where it happened, and what command you ran!`,
             fields: [{
                 name: 'Error details',
                 value: `\`\`\`${err}\`\`\``,

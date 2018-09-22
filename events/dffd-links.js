@@ -21,6 +21,9 @@ module.exports = {
                             title: res.body.filename,
                             url: `http://dffd.bay12games.com/file.php?id=${id}`,
                             description: `by ${res.body.author}`,
+                            author: {
+                                name: 'Dwarf Fortress File Depot'
+                            },
                             fields: [
                                 {
                                     name: 'Version',
