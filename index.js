@@ -59,7 +59,7 @@ var cycleGame = () => {
 
 
 var makeGuildInfo = g => {
-    bot.db[g.id].get.then(a => {
+    bot.db[g.id]().then(a => {
         if (!a || !a.tags) {
             console.log('Creating information for guild ' + g.name)
             bot.db[g.id].set({tags: {}})
