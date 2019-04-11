@@ -1,9 +1,7 @@
-/*
+/**
  * dfbot
- * powered by nxtbot
- * by your average cat, ry00001
- * version "I have no idea what I'm doing"
- * builds: passing (probably at least)
+ * @author ry00001
+ * @version "heck you work"
  */
 
 const Eris = require('eris')
@@ -59,17 +57,19 @@ var cycleGame = () => {
 
 
 var makeGuildInfo = g => {
-    bot.db[g.id]().then(a => {
+    if (config.bot.nolinks) return;
+    bot.db[g.id]().then(async a => {
         if (!a || !a.tags) {
             console.log('Creating information for guild ' + g.name)
-            bot.db[g.id].set({tags: {}})
+            await bot.db[g.id].set({tags: {}})
         }
     })
 }
 
-var delGuildInfo = g => {
+var delGuildInfo = async g => {
+    if (config.bot.nolinks) return;
     console.log('Deleting information for guild ' + g.name)
-    bot.db[g.id].set({})
+    await bot.db[g.id].set({})
 }
 
 bot.on('guildCreate', g => {

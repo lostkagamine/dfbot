@@ -2,6 +2,7 @@ module.exports = {
     name: 'link',
     description: 'Manages and views links.',
     code: async (ctx, args) => {
+        if (ctx.bot.config.bot.nolinks) return await ctx.send("Links are currently disabled.");
         let hasPerm = u => ctx.bot.isOwner(u) || u.permission.has('manageGuild')
         if (args[0] === 'list') {
             let alllinks = await ctx.bot.db[ctx.guild.id].tags()

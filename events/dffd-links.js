@@ -3,9 +3,11 @@ const superagent = require('superagent');
 module.exports = {
     events: ['messageCreate'],
     code: m => {
+        //if (m.channel.guild.id === '102738113478021120') { return };
         let dfre = /http:\/\/dffd.bay12games.com\/file.php\?id=(.*)+/
         if (m.author.bot) return; // prevent the bot from looping in on itself
         if (dfre.test(m.content)) {
+            console.log('the event ran')
             let id = dfre.exec(m.content)[1]
             // we got the ID
             superagent.get(`http://dffd.bay12games.com/file_data/${id}.json`)
