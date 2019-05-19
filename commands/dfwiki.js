@@ -34,7 +34,8 @@ module.exports = {
             })
             .catch(e => {
                 console.log(e);
-                ctx.send('Oops, some kind of error has occurred during wiki search. Please tell the dev.')
+                ctx.send('Oops, some kind of error has occurred during wiki search. Please tell the dev. I will also auto-restart to attempt to fix the bug.')
+                    .then(() => process.exit(1));
             })
     },
     aliases: ['wiki', 'w']
