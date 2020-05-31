@@ -1,7 +1,7 @@
 /**
  * dfbot
  * @author ry00001
- * @version "heck you work"
+ * @version "heck you work v2"
  */
 
 const Eris = require('eris')
